@@ -243,14 +243,14 @@ async function fetchCategories() {
       fragrances: "images/perfume2.png",
       furniture: "images/mirror.png",
       groceries: "images/grocery2.png",
-      home_decoration: "images/shelf.png",
-      kitchen_accessories: "images/kitchen.png",
+      "home-decoration": "images/shelf.png",
+      "kitchen-accessories": "images/kitchen.png",
       laptops: "images/Category-Computer.svg",
       smartphones: "images/Category-CellPhone.svg",
       tops: "images/Category-Gamepad.svg",
-      womens_dresses: "images/clothes.svg",
-      mens_shoes: "images/shoes.svg",
-      womens_watches: "images/Category-SmartWatch.svg",
+      "womens-dresses": "images/clothes.svg",
+      "mens-shoes": "images/shoes.svg",
+      "womens-watches": "images/Category-SmartWatch.svg",
     };
 
     limitedCategories.forEach((cat) => {
