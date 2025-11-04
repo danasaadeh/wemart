@@ -65,14 +65,14 @@ document.getElementById("categoryPrevPage").addEventListener("click", () => {
   if (categoryCurrentPage > 1) {
     categoryCurrentPage--;
     fetchCategoryProducts(categoryCurrentPage);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ behavior: "smooth" });
   }
 });
 
 document.getElementById("categoryNextPage").addEventListener("click", () => {
   categoryCurrentPage++;
   fetchCategoryProducts(categoryCurrentPage);
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({ behavior: "smooth" });
 });
 
 document.addEventListener("DOMContentLoaded", () => {

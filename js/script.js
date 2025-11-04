@@ -58,14 +58,14 @@ document.getElementById("prevPage").addEventListener("click", () => {
   if (currentPage > 1) {
     currentPage--;
     fetchProducts(currentPage);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ behavior: "smooth" });
   }
 });
 
 document.getElementById("nextPage").addEventListener("click", () => {
   currentPage++;
   fetchProducts(currentPage);
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({ behavior: "smooth" });
 });
 
 // Featured Products
@@ -207,7 +207,7 @@ async function fetchFeaturedProducts(page = 1) {
         if (featuredCurrentPage > 1) {
           featuredCurrentPage--;
           fetchFeaturedProducts(featuredCurrentPage);
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          window.scrollTo({ behavior: "smooth" });
         }
       });
 
@@ -218,7 +218,7 @@ async function fetchFeaturedProducts(page = 1) {
         if (featuredCurrentPage < totalPages) {
           featuredCurrentPage++;
           fetchFeaturedProducts(featuredCurrentPage);
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          window.scrollTo({ behavior: "smooth" });
         }
       });
   } catch (error) {

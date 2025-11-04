@@ -72,14 +72,14 @@ document.getElementById("prevPage").addEventListener("click", () => {
   if (currentPage > 1) {
     currentPage--;
     fetchProducts(currentPage);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ behavior: "smooth" });
   }
 });
 
 document.getElementById("nextPage").addEventListener("click", () => {
   currentPage++;
   fetchProducts(currentPage);
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({ behavior: "smooth" });
 });
 
 document.addEventListener("DOMContentLoaded", () => {
