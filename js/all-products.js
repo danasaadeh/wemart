@@ -1,5 +1,5 @@
 let currentPage = 1;
-const limit = 8; // Number of products per page
+const limit = 8;
 let totalProducts = 0;
 
 async function fetchProducts(page = 1) {
@@ -56,7 +56,6 @@ async function fetchProducts(page = 1) {
       productList.appendChild(card);
     });
 
-    // Update pagination info
     const pageInfo = document.getElementById("pageInfo");
     pageInfo.textContent = `Page ${page} of ${totalPages}`;
 

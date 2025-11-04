@@ -1,5 +1,3 @@
-// js/cart.js
-
 function loadCart() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const container = document.getElementById("cart-container");
@@ -50,7 +48,6 @@ function loadCart() {
 
   totalElement.textContent = total.toFixed(2);
 
-  // Remove item
   document.querySelectorAll(".remove-item").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const index = e.target.dataset.index;

@@ -3,7 +3,6 @@ const categoryLimit = 6;
 let categoryTotal = 0;
 let currentCategory = "";
 
-// ✅ Read category name from URL
 function getCategoryFromUrl() {
   const params = new URLSearchParams(window.location.search);
   return params.get("category");
@@ -50,7 +49,6 @@ async function fetchCategoryProducts(page = 1) {
       container.appendChild(card);
     });
 
-    // ✅ Update pagination
     document.getElementById(
       "categoryPageInfo"
     ).textContent = `Page ${page} of ${totalPages}`;
@@ -63,7 +61,6 @@ async function fetchCategoryProducts(page = 1) {
   }
 }
 
-// ✅ Pagination controls
 document.getElementById("categoryPrevPage").addEventListener("click", () => {
   if (categoryCurrentPage > 1) {
     categoryCurrentPage--;
@@ -81,7 +78,6 @@ document.getElementById("categoryNextPage").addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => {
   currentCategory = getCategoryFromUrl();
 
-  // Ensure clean readable name
   currentCategory = decodeURIComponent(currentCategory);
   document.getElementById("category-title").textContent = currentCategory
     .replace(/_/g, " ")
