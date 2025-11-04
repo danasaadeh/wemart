@@ -299,3 +299,81 @@ document.addEventListener("DOMContentLoaded", () => {
 document.getElementById("cart-icon").addEventListener("click", () => {
   window.location.href = "cart.html";
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.querySelector(
+    'header input[placeholder="Search something..."]'
+  );
+  const searchModal = document.getElementById("searchModal");
+  const closeModal = document.getElementById("closeSearchModal");
+  const searchModalInput = document.getElementById("searchModalInput");
+  const searchResults = document.getElementById("searchResults");
+
+  // Open modal when clicking or focusing the navbar search
+  searchInput.addEventListener("focus", () => {
+    searchModal.classList.remove("hidden");
+    searchModalInput.focus();
+  });
+  searchInput.addEventListener("click", () => {
+    searchModal.classList.remove("hidden");
+    searchModalInput.focus();
+  });
+
+  // Close modal when clicking outside or on the X button
+  closeModal.addEventListener("click", () => {
+    searchModal.classList.add("hidden");
+  });
+  searchModal.addEventListener("click", (e) => {
+    if (e.target === searchModal) {
+      searchModal.classList.add("hidden");
+    }
+  });
+
+  // Search modal
+  let timeout;
+  searchModalInput.addEventListener("input", (e) => {
+    const query = e.target.value.trim();
+    clearTimeout(timeout);
+
+    if (query.length < 2) {
+      searchResults.innerHTML =
+        '<p class="text-gray-500 text-center py-4 text-sm">Start typing to search...</p>';
+      return;
+    }
+
+    timeout = setTimeout(async () => {
+      try {
+        const res = await fetch(
+          `https://dummyjson.com/products/search?q=${encodeURIComponent(query)}`
+        );
+        const data = await res.json();
+
+        if (!data.products.length) {
+          searchResults.innerHTML =
+            '<p class="text-center py-4 text-gray-500">No results found.</p>';
+          return;
+        }
+
+        searchResults.innerHTML = data.products
+          .slice(0, 8)
+          .map(
+            (p) => `
+              <div class="flex items-center gap-3 px-4 py-2 hover:bg-gray-50 cursor-pointer"
+                   onclick="window.location.href='product.html?id=${p.id}'">
+                <img src="${p.thumbnail}" alt="${p.title}"
+                     class="w-10 h-10 rounded object-cover border" />
+                <div>
+                  <p class="text-sm font-medium text-gray-800">${p.title}</p>
+                  <p class="text-xs text-gray-500">$${p.price}</p>
+                </div>
+              </div>
+            `
+          )
+          .join("");
+      } catch (err) {
+        searchResults.innerHTML =
+          '<p class="text-red-500 text-center py-3">Error fetching search results.</p>';
+      }
+    }, 300);
+  });
+});
